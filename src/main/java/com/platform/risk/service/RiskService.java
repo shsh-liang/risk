@@ -7,12 +7,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.alibaba.fastjson.JSON;
 import com.platform.risk.callback.AddGreyListCallBackService;
 import com.platform.risk.callback.CallBackService;
 import com.platform.risk.callback.RiskRequestCallBackService;
 import com.platform.risk.callback.UploadRecordCallBackService;
-import com.platform.risk.dto.req.AccessTokenReq;
 import com.platform.risk.dto.req.AddGreyListReq;
 import com.platform.risk.dto.req.BaseReq;
 import com.platform.risk.dto.req.RiskPushReq;
@@ -24,7 +22,6 @@ import com.platform.risk.dto.resp.RespCode;
 import com.platform.risk.dto.resp.RiskRequestResp;
 import com.platform.risk.dto.resp.UploadRecordResp;
 import com.platform.risk.utils.CheckFieldRequiredUtils;
-import com.platform.risk.utils.HttpUtils;
 import com.platform.risk.utils.RespUtils;
 
 @Service
@@ -110,7 +107,7 @@ public class RiskService {
 			}
 		}
 	}
-	
+
 	/**
 	 * 风控结果推送
 	 * 
@@ -118,12 +115,6 @@ public class RiskService {
 	 */
 	public void riskPush(BaseReq<RiskPushReq> req) {
 		logger.info("调用风控结果推送接口");
-		BaseReq<AccessTokenReq> req1 = new BaseReq<AccessTokenReq>();
-		AccessTokenReq req11 = new AccessTokenReq();
-		req11.setChannelCode("test");
-		req1.setData(req11);
-		String resp = HttpUtils.doPost(riskPushUrl, JSON.toJSONString(req1));
-		System.out.println(resp);
 		logger.info("调用风控结果推送接口结束");
 	}
 

@@ -9,5 +9,5 @@ public class CommonConstans {
 	static {
 		CHANNEL_MAP.put("test", "test");
 	}
-	public static final long ACCESS_TOKEN_EXPIRE = 7200000l;
+	public static final long ACCESS_TOKEN_EXPIRE = 7200l;
 }
